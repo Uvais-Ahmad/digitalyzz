@@ -114,32 +114,32 @@ export function Layout({ children }: LayoutProps) {
         </div>
 
         <Tabs defaultValue="upload" className="w-full">
-          <TabsList className="grid w-full grid-cols-7 mb-6">
+          <TabsList className="grid w-full grid-cols-7 mb-6" data-tour="main-navigation">
             <TabsTrigger value="upload" className="flex items-center gap-2">
               <UploadIcon />
               Upload
             </TabsTrigger>
-            <TabsTrigger value="data" className="flex items-center gap-2">
+            <TabsTrigger value="data" className="flex items-center gap-2" data-tour="data-tab">
               <DatabaseIcon />
               Data
             </TabsTrigger>
-            <TabsTrigger value="validation" className="flex items-center gap-2">
+            <TabsTrigger value="validation" className="flex items-center gap-2" data-tour="validation-tab">
               <AlertIcon />
               Validation
             </TabsTrigger>
-            <TabsTrigger value="ai-query" className="flex items-center gap-2">
+            <TabsTrigger value="ai-query" className="flex items-center gap-2" data-tour="ai-query-tab">
               <CpuIcon />
               AI Query
             </TabsTrigger>
-            <TabsTrigger value="ai-corrections" className="flex items-center gap-2">
+            <TabsTrigger value="ai-corrections" className="flex items-center gap-2" data-tour="ai-corrections-tab">
               <WrenchIcon />
               AI Corrections
             </TabsTrigger>
-            <TabsTrigger value="rules" className="flex items-center gap-2">
+            <TabsTrigger value="rules" className="flex items-center gap-2" data-tour="rules-tab">
               <SettingsIcon />
               Rules
             </TabsTrigger>
-            <TabsTrigger value="export" className="flex items-center gap-2">
+            <TabsTrigger value="export" className="flex items-center gap-2" data-tour="export-tab">
               <DownloadIcon />
               Export
             </TabsTrigger>

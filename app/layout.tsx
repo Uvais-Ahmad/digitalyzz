@@ -4,6 +4,7 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import { DataProvider } from "@/store/data-context"
 import { Toaster } from "@/components/ui/toaster"
+import { TourProvider } from "@/components/tour-provider"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,8 +27,10 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} antialiased`}>
       <body className="font-sans">
         <DataProvider>
-          {children}
-          <Toaster />
+            <TourProvider>
+              {children}
+              <Toaster />
+            </TourProvider>
         </DataProvider>
       </body>
     </html>

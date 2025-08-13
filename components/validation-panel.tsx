@@ -30,7 +30,8 @@ export function ValidationPanel() {
   }
 
   return (
-    <Card>
+    <div className="validation-panel" data-tour="validation-panel">
+      <Card>
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-2">
@@ -94,5 +95,6 @@ export function ValidationPanel() {
         ))}
       </CardContent>
     </Card>
+    </div>
   )
 }

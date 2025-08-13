@@ -222,7 +222,7 @@ export function ExportPanel() {
   const totalRecords = clients.length + workers.length + tasks.length
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6" data-tour="export-panel">
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
@@ -277,14 +277,14 @@ export function ExportPanel() {
             <label className="text-sm font-medium">Additional Options</label>
             <div className="space-y-2">
               <div className="flex items-center space-x-2">
-                <Checkbox id="rules" checked={includeRules} onCheckedChange={setIncludeRules} />
+                <Checkbox id="rules" checked={includeRules} onCheckedChange={checked => setIncludeRules(!!checked)} />
                 <label htmlFor="rules" className="text-sm flex items-center gap-2">
                   Include Rules Configuration
                   <Badge variant="secondary">{rules.length} rules</Badge>
                 </label>
               </div>
               <div className="flex items-center space-x-2">
-                <Checkbox id="validation" checked={includeValidation} onCheckedChange={setIncludeValidation} />
+                <Checkbox id="validation" checked={includeValidation} onCheckedChange={checked => setIncludeValidation(!!checked)} />
                 <label htmlFor="validation" className="text-sm flex items-center gap-2">
                   Include Validation Report
                   <Badge variant="secondary">{validationErrors.length} issues</Badge>

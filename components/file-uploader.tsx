@@ -257,11 +257,11 @@ export function FileUploader({ onValidationComplete }: FileUploadProps) {
             name: file.name,
             type: result.entityType,
             status: "success",
-            aiUsed: result.aiMappingUsed || false,
+            aiUsed: 'aiMappingUsed' in result ? Boolean((result as any).aiMappingUsed) : false,
           })
 
-          const processingMethod = result.aiMappingUsed ? "AI-enhanced mapping" : "basic mapping"
-          const quotaNote = result.error?.includes("quota") ? " (AI quota reached)" : ""
+          const processingMethod = 'aiMappingUsed' in result && result.aiMappingUsed ? "AI-enhanced mapping" : "basic mapping"
+          const quotaNote = result.errors && Array.isArray(result.errors) && result.errors.some(e => e.includes("quota")) ? " (AI quota reached)" : ""
 
           toast({
             title: "File Uploaded Successfully",
@@ -270,8 +270,7 @@ export function FileUploader({ onValidationComplete }: FileUploadProps) {
         } else {
           hasErrors = true
           const errorMessage = result.errors?.join(", ") || "Unknown error occurred"
-
-          if (errorMessage.includes("quota") || errorMessage.includes("rate limit")) {
+          if (result.errors && Array.isArray(result.errors) && result.errors.some(e => e.includes("quota") || e.includes("rate limit"))) {
             hasQuotaErrors = true
           }
 
@@ -326,7 +325,7 @@ export function FileUploader({ onValidationComplete }: FileUploadProps) {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4" data-tour="file-upload">
       <Card>
         <CardContent className="p-6">
           <div
