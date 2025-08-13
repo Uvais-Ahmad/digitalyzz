@@ -8,41 +8,50 @@ const TOUR_SEEN_KEY = 'hasSeenTour';
 const steps: Step[] = [
   {
     target: 'body',
-    content: 'Welcome to Digitalyzz! This guided tour will show you how to upload, process, validate, and export your data using AI-enhanced features. Let\'s get started!',
+    content: '👋 Welcome to Digitalyzz! Let me show you how to process your data from upload to export in just a few simple steps.',
     placement: 'center',
+    title: 'Welcome to Your Data Processing Journey',
   },
   {
     target: '[data-tour="file-upload"]',
-    content: 'Step 1: Start by uploading your CSV or XLSX files here. The system supports automatic AI-enhanced mapping to detect your data structure.',
+    content: '📁 Start by uploading your CSV or Excel files here. Our AI will automatically detect and map your data columns for optimal processing.',
+    title: 'Step 1: Upload Your Files',
   },
   {
     target: '[data-tour="data-tab"]',
-    content: 'Step 2: After uploading, switch to the Data tab to view and manage your uploaded data. You can edit records, search through data, and organize it by entity type (Clients, Workers, Tasks).',
+    content: '📊 View and manage your uploaded data here. You can see all clients, workers, and tasks in organized tables with search and filter capabilities.',
+    title: 'Step 2: Review Your Data',
   },
   {
     target: '[data-tour="validation-tab"]',
-    content: 'Step 3: Check the Validation tab to review any data quality issues. The system automatically validates your data and provides suggestions for corrections.',
+    content: '✅ Check data quality here. Any validation errors or warnings will be highlighted with helpful suggestions for fixes.',
+    title: 'Step 3: Validate Data Quality',
   },
   {
     target: '[data-tour="ai-query-tab"]',
-    content: 'Step 4: Use AI Query to ask natural language questions about your data. For example: "Show me all tasks assigned to John" or "Which clients have the highest project values?"',
+    content: '🤖 Ask questions about your data using natural language. Get insights, summaries, and analysis powered by AI.',
+    title: 'Step 4: Query Your Data with AI',
   },
   {
     target: '[data-tour="ai-corrections-tab"]',
-    content: 'Step 5: The AI Corrections tab helps you automatically fix data quality issues using AI suggestions. It can correct formatting, fill missing values, and standardize data.',
+    content: '🔧 Let AI automatically fix data issues and inconsistencies. Review and apply suggested corrections to improve data quality.',
+    title: 'Step 5: AI-Powered Corrections',
   },
   {
     target: '[data-tour="rules-tab"]',
-    content: 'Step 6: Create business rules in the Rules tab. You can write rules in plain English or use the structured rule builder to enforce data quality and business logic.',
+    content: '📋 Create business rules to enforce data standards. Write rules in plain English or use our visual rule builder.',
+    title: 'Step 6: Set Up Business Rules',
   },
   {
     target: '[data-tour="export-tab"]',
-    content: 'Step 7: Finally, export your processed and validated data in various formats (CSV, Excel, JSON). You can export individual datasets or create a complete package with all your data, rules, and validation reports.',
+    content: '📤 Export your processed data in multiple formats (CSV, Excel, JSON). Create complete packages with data, rules, and reports.',
+    title: 'Step 7: Export Your Results',
   },
   {
     target: 'body',
-    content: 'That\'s it! You now know how to use Digitalyzz for complete data processing workflow. You can always revisit any step as needed. Happy data processing!',
+    content: '🎉 Congratulations! You now know how to use Digitalyzz for complete data processing. Each step builds on the previous one to ensure high-quality results.',
     placement: 'center',
+    title: 'You\'re All Set!',
   },
 ];
 
@@ -89,35 +98,126 @@ export const TourProvider: React.FC<{ children: React.ReactNode }> = ({ children
         styles={{
           options: {
             zIndex: 10000,
-            primaryColor: '#2563eb',
+            primaryColor: '#3b82f6',
+            textColor: '#1f2937',
+            backgroundColor: '#ffffff',
+            arrowColor: '#ffffff',
+            overlayColor: 'rgba(0, 0, 0, 0.3)',
           },
           tooltip: {
+            borderRadius: 12,
+            padding: 24,
             fontSize: 16,
-            padding: 20,
+            fontWeight: 500,
+            lineHeight: 1.6,
+            maxWidth: 480,
+            minWidth: 420,
+            width: 'auto',
+            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+            border: '1px solid #e5e7eb',
+            fontFamily: 'Inter, system-ui, sans-serif',
+          },
+          tooltipTitle: {
+            fontSize: 18,
+            fontWeight: 600,
+            marginBottom: 12,
+            color: '#111827',
+            lineHeight: 1.4,
           },
           tooltipContent: {
-            padding: '20px 10px',
+            fontSize: 15,
+            lineHeight: 1.6,
+            color: '#4b5563',
+            marginBottom: 20,
+          },
+          tooltipFooter: {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '12px',
+            flexWrap: 'nowrap',
+            marginTop: '16px',
           },
           buttonNext: {
-            backgroundColor: '#2563eb',
+            backgroundColor: '#3b82f6',
+            borderRadius: 8,
             fontSize: 14,
-            padding: '8px 16px',
+            fontWeight: 600,
+            padding: '12px 24px',
+            border: 'none',
+            cursor: 'pointer',
+            transition: 'all 0.2s ease',
+            boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+            whiteSpace: 'nowrap',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            color: '#ffffff',
           },
           buttonBack: {
-            color: '#6b7280',
-            marginRight: 10,
+            backgroundColor: '#f9fafb',
+            color: '#374151',
+            borderRadius: 8,
+            fontSize: 14,
+            fontWeight: 500,
+            padding: '12px 20px',
+            border: '1px solid #d1d5db',
+            cursor: 'pointer',
+            transition: 'all 0.2s ease',
+            whiteSpace: 'nowrap',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
           },
           buttonSkip: {
+            backgroundColor: 'transparent',
             color: '#6b7280',
+            fontSize: 13,
+            fontWeight: 500,
+            border: 'none',
+            cursor: 'pointer',
+            textDecoration: 'underline',
+            padding: '8px 12px',
+            whiteSpace: 'nowrap',
+          },
+          spotlight: {
+            borderRadius: 8,
+            backgroundColor: 'transparent',
+            border: '3px solid #3b82f6',
+            boxShadow: '0 0 0 9999px rgba(0, 0, 0, 0.3)',
+          },
+          beaconInner: {
+            backgroundColor: '#3b82f6',
+          },
+          beaconOuter: {
+            backgroundColor: 'rgba(59, 130, 246, 0.3)',
+            border: '2px solid #3b82f6',
+          },
+          overlay: {
+            backgroundColor: 'rgba(0, 0, 0, 0.3)',
+            mixBlendMode: 'normal',
           },
         }}
         locale={{
-          back: 'Previous',
-          close: 'Close',
-          last: 'Finish Tour',
-          next: 'Next',
-          skip: 'Skip Tour',
+          back: '← Previous',
+          close: '× Close',
+          last: '🎉 Complete Tour',
+          next: 'Next →',
+          skip: 'Skip for now',
         }}
+        floaterProps={{
+          disableAnimation: false,
+          styles: {
+            floater: {
+              filter: 'drop-shadow(0 20px 25px rgba(0, 0, 0, 0.15))',
+            },
+          },
+        }}
+        disableOverlayClose={true}
+        disableScrollParentFix={true}
+        spotlightClicks={false}
+        scrollToFirstStep={true}
+        hideCloseButton={false}
       />
       {children}
     </>
